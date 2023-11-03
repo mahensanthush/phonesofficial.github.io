@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ecommerce-UI</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ui_header {
+            color: #fff;
+            background-color: #0c4da7;
+            font-size: 35px;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .ui_itembar {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .ui_item {
+            flex: 1;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .ui_item-img {
+            max-width: 110%;
+            height: 80%;
+        }
+
+        .ui_item-img2 {
+            max-width: 110%;
+            height: 80%;
+        }
+
+        .ui_item-img5 {
+            padding-top: 10px;
+            max-width: 90%;
+            height: 72%;
+        }
+
+        .ui_item button {
+            background-color: #f43012;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .ui_item-description {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ui_item-description2 {
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ui_item-description span {
+            margin-bottom: 10px;
+        }
+
+        .ui_footer {
+            background-color: #0c4da7;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            height: auto;
+        }
+
+        .ui_footer-icon {
+            width: 20px;
+            align-items: flex-start;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        .ui_footer-title {
+            font-size: 25px;
+        }
+
+        .remove-from-cart {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ui_header">
+        <span>Items</span>
+    </div>
+
+    <div class="ui_itembar">
+        <div class="ui_item">
+            <img class="ui_item-img" src="https://www.manua.ls/thumbs/products/l/1452509-samsung-galaxy-a03s.jpg"
+                alt="Samsung Galaxy A03s">
+            <div class="ui_item-description">
+                <span>Samsung Galaxy A03s</span>
+                <button class="add-to-cart" data-name="Samsung Galaxy A03s">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="ui_item">
+            <img class="ui_item-img2"
+                src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/admin-image/phones/nova-y70/list/list-blue.png"
+                alt="Huawei Nova Y70">
+            <div class="ui_item-description">
+                <span>Huawei Nova Y70</span>
+                <button class="add-to-cart" data-name="Huawei Nova Y70">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="ui_item">
+            <img class="ui_item-img" src="https://smartmobile.lk/image/cache/catalog/Apple-iPhone-11s-500x500.jpg"
+                alt="Apple iPhone 11 68GB">
+            <div class="ui_item-description">
+                <span>Apple iPhone 11 68GB</span>
+                <button class="add-to-cart" data-name="Apple iPhone 11 68GB">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="ui_item">
+            <img class="ui_item-img5"
+                src="https://bsimg.nl/images/apple-iphone-13-pro-128gb-blauw_2.jpg/azcvWswuY_qV5XWnn7s5dJNhI0k%3D/fit-in/257x400/filters%3Aformat%28png%29%3Aupscale%28%29"
+                alt="Apple iPhone 13 Pro-128GB">
+            <div class="ui_item-description2">
+                <span>Apple iPhone 13 Pro-128GB</span>
+                <button class="add-to-cart" data-name="Apple iPhone 13 Pro-128GB">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="ui_item">
+            <img class="ui_item-img" src="https://celltronics.lk/wp-content/uploads/2022/06/iPhone-SE-600x600.jpg"
+                alt="Apple iPhone SE 3 (2022) 64GB">
+            <div class="ui_item-description">
+                <span>Apple iPhone SE 3 (2022) 64GB</span>
+                <button class="add-to-cart" data-name="Apple iPhone SE 3 (2022) 64GB">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui_footer">
+        <div class="ui_footer-title">Cart</div>
+        <div class="ui_footer-body">
+            <img class="ui_footer-icon" src="https://www.svgrepo.com/show/500433/shopping-cart.svg" alt="Shopping Cart">
+            <p>Items</p>
+            <ul id="cart-items">
+
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+        const cartItemsList = document.getElementById("cart-items");
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const itemName = button.getAttribute("data-name");
+                const listItem = document.createElement("li");
+                listItem.textContent = itemName;
+
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "Remove from Cart";
+                removeButton.className = "remove-from-cart";
+
+                removeButton.addEventListener("click", () => {
+                    cartItemsList.removeChild(listItem);
+                });
+                listItem.appendChild(removeButton);
+
+                cartItemsList.appendChild(listItem);
+            });
+        });
+    </script>
+</body>
+
+</html>
